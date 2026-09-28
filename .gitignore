@@ -1,0 +1,15 @@
+# environments and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.DS_Store
+
+# local tooling
+.claude/
+
+# training runs and personal training-mode progress
+runs/
+data/

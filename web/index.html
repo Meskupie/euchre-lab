@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Euchre Lab</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Euchre&nbsp;Lab <span id="model-badge" class="badge"></span></div>
+    <div class="controls">
+      <button id="btn-new" class="primary">New deal</button>
+      <button id="btn-edit">Set up hand…</button>
+      <button id="btn-restart" title="Replay this deal from the start">Restart hand</button>
+      <button id="btn-share" title="Copy a link to this exact position">Copy link</button>
+    </div>
+    <div class="toggles">
+      <label title="Dealer must call trump if everyone passes twice"><input type="checkbox" id="opt-stick"> Stick the dealer</label>
+      <label><input type="checkbox" id="opt-reveal"> Show all hands</label>
+      <label title="Hide the AI's evaluation until you choose, auto-play obvious and mastered decisions, and track progress"><input type="checkbox" id="opt-train"> Training mode</label>
+      <label title="Make the decisions for every seat yourself"><input type="checkbox" id="opt-all"> I play all seats</label>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="table-wrap">
+      <div id="table" class="table">
+        <div class="seat seat-2" data-seat="2"></div>
+        <div class="seat seat-1" data-seat="1"></div>
+        <div class="center" id="center"></div>
+        <div class="seat seat-3" data-seat="3"></div>
+        <div class="seat seat-0" data-seat="0"></div>
+      </div>
+      <div id="status" class="status"></div>
+    </section>
+
+    <aside class="panel">
+      <div id="decision" class="card-box"></div>
+      <div id="analysis" class="card-box hidden"></div>
+      <div id="progress" class="card-box"></div>
+      <div class="card-box">
+        <div class="box-head">
+          <h3>Hand log</h3>
+          <span class="hint">Click any move to rewind and try something else</span>
+        </div>
+        <ol id="log" class="log"></ol>
+      </div>
+    </aside>
+  </main>
+
+  <dialog id="editor">
+    <form method="dialog" class="editor">
+      <h3>Set up a hand</h3>
+      <p class="hint">Pick a destination, then click cards to place them. Anything you leave empty is dealt randomly.</p>
+      <div class="targets" id="ed-targets"></div>
+      <div class="grid" id="ed-grid"></div>
+      <div class="ed-row">
+        <label>Dealer
+          <select id="ed-dealer">
+            <option value="0">You (South)</option><option value="1">West</option>
+            <option value="2">Partner (North)</option><option value="3">East</option>
+          </select>
+        </label>
+        <span class="spacer"></span>
+        <button type="button" id="ed-clear">Clear</button>
+        <button type="button" id="ed-current">Load current deal</button>
+        <button value="cancel">Cancel</button>
+        <button type="button" id="ed-go" class="primary">Deal it</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

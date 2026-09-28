@@ -1,0 +1,29 @@
+[project]
+name = "euchre-lab"
+version = "0.1.0"
+description = "A self-play reinforcement-learning euchre AI and a web app for training against it"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.2", "numpy", "fastapi", "uvicorn[standard]"]
+
+[project.optional-dependencies]
+dev = ["pytest", "httpx", "ruff"]
+
+[tool.setuptools]
+packages = ["euchre", "server"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I", "UP"]
+ignore = ["B905"]  # zip() without strict=
+
+[tool.ruff.lint.isort]
+known-first-party = ["euchre", "server"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore:Using `httpx`"]
