@@ -26,4 +26,5 @@ known-first-party = ["euchre", "server"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 filterwarnings = ["ignore:Using `httpx`"]
